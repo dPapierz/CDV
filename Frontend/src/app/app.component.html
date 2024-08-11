@@ -1,0 +1,12 @@
+<nav>
+  <ul>
+    @if (authService.isAuthenticated()) {
+      <li><a routerLink="/logout" routerLinkActive="active" ariaCurrentWhenActive="page">Logout</a></li>
+      <li><a routerLink="/lessons" routerLinkActive="active" ariaCurrentWhenActive="page">Lessons</a></li>
+    } @else {
+      <li><a routerLink="/login" routerLinkActive="active" ariaCurrentWhenActive="page">Login</a></li>
+    }
+  </ul>
+</nav>
+
+<router-outlet />

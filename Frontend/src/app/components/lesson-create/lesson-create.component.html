@@ -1,0 +1,43 @@
+<div class="container">
+  <form [formGroup]="lessonForm" class="col-6" (ngSubmit)="onSubmit()">
+    <div class="form-outline mb-4">
+      <label class="form-label" for="title">Tytuł lekcji</label>
+      <input type="text" id="title" formControlName="title" class="form-control" />
+      <div *ngIf="lessonForm.controls.title.errors?.['errors']">
+        @for (error of lessonForm.controls.title.errors?.['errors']; track $index) {
+          <small class="text-danger">{{ error }}</small>
+        }
+      </div>
+    </div>
+
+    <div class="form-outline mb-4">
+      <label class="form-label" for="content">Treść lekcji</label>
+      <input type="text" id="content" formControlName="content" class="form-control" />
+      <div *ngIf="lessonForm.controls.content.errors?.['errors']">
+        @for (error of lessonForm.controls.content.errors?.['errors']; track $index) {
+          <small class="text-danger">{{ error }}</small>
+        }
+      </div>
+    </div>
+
+    <div>
+      <label for="teacher">Nauczyciele: </label>
+      <select id="teacher" formControlName="teacher">
+        <option *ngFor="let teacher of teachers" [value]="teacher.id">
+          {{ teacher.email }}
+        </option>
+      </select>
+    </div>
+
+    <div>
+      <label for="students">Studenci: </label>
+      <select multiple id="students" formControlName="students">
+        <option *ngFor="let student of students" [value]="student.id">
+          {{ student.email }}
+        </option>
+      </select>
+    </div>
+  
+    <button type="submit" class="btn btn-primary btn-block mb-4" [disabled]="!lessonForm.valid">Create</button>
+  </form>
+</div>

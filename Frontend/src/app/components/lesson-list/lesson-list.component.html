@@ -1,0 +1,34 @@
+<h1>Lessons</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Title</th>
+            <th>Content</th>
+            <th>actions</th>
+        </tr>
+    </thead>
+    <tbody>
+      @if (lessons) {
+        @for (lesson of lessons; track lesson.id) {
+          <tr>
+              <td>{{ lesson.id }}</td>
+              <td>{{ lesson.title }}</td>
+              <td>{{ lesson.content }}</td>
+              <td>
+                <button [routerLink]="['/lesson/edit', lesson.id]">Edit</button>
+                <button [routerLink]="['/lesson', lesson.id]">Show</button>
+                <button [routerLink]="['/lesson/delete', lesson.id]">Delete</button>
+              </td>
+          </tr>
+        }
+      } @else {
+        <tr>
+            <td colspan="4">no records found</td>
+        </tr>
+      }
+    </tbody>
+</table>
+
+<button [routerLink]="['/lesson/create']">New</button>

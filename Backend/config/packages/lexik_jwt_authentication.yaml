@@ -1,0 +1,31 @@
+lexik_jwt_authentication:
+    secret_key: '%env(resolve:JWT_SECRET_KEY)%'
+    public_key: '%env(resolve:JWT_PUBLIC_KEY)%'
+    pass_phrase: '%env(JWT_PASSPHRASE)%'
+
+    api_platform:
+        check_path: /api/login_check
+        username_path: email
+        password_path: security.credentials.password
+
+    token_extractors:
+        cookie:
+            enabled: true
+            name: AUTHORIZATION_JWT
+        authorization_header:
+            enabled: true
+            prefix:  AUTHORIZATION_JWT
+            name:    Authorization
+
+    set_cookies:
+        AUTHORIZATION_JWT: ~
+
+    # Full config with defaults:
+        AUTHORIZATION_JWT:
+            samesite: none
+        #      lifetime: null (defaults to token ttl)
+        #      path: /
+        #      domain: null (null means automatically set by symfony)
+        #      secure: true (default to true)
+        #      httpOnly: true
+        #      partitioned: false

@@ -1,0 +1,18 @@
+<div class="container">
+  <form [formGroup]="loginForm" class="col-6" (ngSubmit)="onSubmit()">
+    <div class="form-outline mb-4">
+      <input type="email" id="email" formControlName="email" class="form-control" />
+      <label class="form-label" for="email">Email address</label>
+    </div>
+  
+    <div class="form-outline mb-4">
+      <input type="password" id="password" formControlName="password" class="form-control" />
+      <label class="form-label" for="password">Password</label>
+      <div *ngIf="loginForm.controls.password.errors?.['authError']">
+        <small class="text-danger">{{ loginForm.controls.password.errors?.['authError'] }}</small>
+      </div>
+    </div>
+  
+    <button type="submit" class="btn btn-primary btn-block mb-4" [disabled]="!loginForm.valid">Sign in</button>
+  </form>
+</div>

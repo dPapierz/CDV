@@ -1,0 +1,24 @@
+@if (lesson) {
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h1>Lekcja</h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <h1>Tytuł: {{ lesson.title }}</h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <h1>Zawartość: {{ lesson.content }}</h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <h1>Prowadzący: {{ teacher?.email }}</h1>
+    </div>
+  </div>
+</div>
+}
